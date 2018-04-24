@@ -12,7 +12,20 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 class PA4Test {
+    
+    @Test
+    void makeChangeWithEmptyArray() {   //test for empty array
+        int array[] = {};
+        Exception e = assertThrows(IllegalArgumentException.class, () -> {  PA4.getChange(array,20); } );
+        assertEquals("Array of size 0 is not allowed", e.getMessage());
+    }
 
+    @Test
+    void getChangeWith0AsChange() {     //test for 0 as change
+        ArrayList<Integer> ans = new ArrayList<>();
+        int array[] = {1,5,10,25};
+        assertEquals(ans,PA4.getChange(array,0));
+    }
     @Test
     void getChangeWithOnlineEx42() {    //tests for online example with 42
         ArrayList<Integer> arr = new ArrayList<>();
